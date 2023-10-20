@@ -6,7 +6,15 @@ app = Flask(__name__)
 # Tampilan awal
 @app.route('/', methods=['GET'])
 def awal():
-    return render_template('register.html')
+    return render_template('awal.html')
+
+@app.route('/pilih', methods=['POST'])
+def pilih():
+    if 'register' in request.form:
+        return render_template('register.html')
+    if 'show_user' in request.form:
+        data = db.show_users()
+        return render_template('show_users.html', data=data)
 
 # Register
 @app.route('/register', methods=['POST'])

@@ -25,3 +25,20 @@ def inputUser(username,email,password):
     db.commit()
     cursor.close()
 
+def show_users():
+    db = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "Hardiansyah_23",
+        database = "portfolio"
+    )
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM users")
+    users = cursor.fetchall()
+    
+
+    return users
+
+
+# print(show_users())
